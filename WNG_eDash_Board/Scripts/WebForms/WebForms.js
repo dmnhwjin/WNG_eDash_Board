@@ -233,6 +233,9 @@ function WebForm_FillFirstAvailableSlot(array, element) {
     array[i] = element;
     return i;
 }
+function bgcolor(str) {
+    window.document.getElementById("mainTable").style.backgroundColor = str;
+}
 var __nonMSDOMBrowser = (window.navigator.appName.toLowerCase().indexOf('explorer') == -1);
 var __theFormPostData = "";
 var __theFormPostCollection = new Array();

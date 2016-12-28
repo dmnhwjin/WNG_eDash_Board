@@ -17,20 +17,22 @@ namespace WNG_eDash_Board
         public int intTarget = 0;
         public int intCum = 0;
         public string dateTimeStr = string.Empty;
-       
+        public string strTime = string.Empty;
+        public string strWebColor = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             string Server = Properties.Settings.Default.Server;
             string database = Properties.Settings.Default.Database;
             string user = Properties.Settings.Default.User;
             string password = Properties.Settings.Default.Password;
-
+            strTime = string.Format("{0}:00-{1}:00", DateTime.Now.Hour, DateTime.Now.AddHours(1).Hour);
             SqlConnectionStringBuilder cnnStr = new SqlConnectionStringBuilder();
             cnnStr.DataSource = Server;
             cnnStr.InitialCatalog = database;
             cnnStr.UserID = user;
             cnnStr.Password = password;
             cnn = new SqlConnection(cnnStr.ConnectionString);
+            
             try
             {
                
@@ -113,6 +115,7 @@ namespace WNG_eDash_Board
             Timer1.Enabled = false;
             try
             {
+                strTime = string.Format("{0}:00-{1}:00", DateTime.Now.Hour, DateTime.Now.AddHours(1).Hour);
                 cnn.Open();
                 DateTime Now = DateTime.Now.AddDays(-15);
                 DateTime newTime = new DateTime(Now.Year, Now.Month, Now.Day, Now.Hour, 0, 0);
@@ -152,14 +155,16 @@ namespace WNG_eDash_Board
                 DateTime dFrom = new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0);
                 DateTime dEnd = new DateTime(dFrom.Year, dFrom.Month, dFrom.Day, dFrom.AddHours(1).Hour, 0, 0);
                 //string cmdTxtQty = string.Format("exec udf_queryTarget '{0}%','{1}','{2}'", strProdName.Substring(0, 9),dFrom,dEnd);
-                double mPerCent= now.Minute / 60;
-                double iPercent = intCum / intTarget;
+                double mPerCent= Convert.ToDouble(now.Minute) / 60;
+                double iPercent = Convert.ToDouble(intCum) / intTarget;
                 if(iPercent<mPerCent)
                 {
                     //strWebColore = "God";
-                }else
+                    strWebColor = "style=\"font - family: 'Segoe UI', Tahoma, Geneva, Verdana, sans - serif; font - size: larger; font - weight: bold; font - style: italic; font - variant: large - caps; text - transform: uppercase;  background-color: #FFFF00\"";
+                }
+                else
                 {
-                    //strWebColore = "LightBlue";
+                    strWebColor = "style=\"font - family: 'Segoe UI', Tahoma, Geneva, Verdana, sans - serif; font - size: larger; font - weight: bold; font - style: italic; font - variant: large - caps; text - transform: uppercase; background-color: #00FFFF\"";
                 }
 
                 using (SqlCommand cmd = new SqlCommand("exec udf_QueryQty @PartNUmber,@TimeStart,@TimeEnd", cnn))

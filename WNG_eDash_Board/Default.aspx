@@ -21,14 +21,16 @@
         </tr>
      <tr>
              <td>
-              <p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase">Target:</p></td><td><p><%=intTarget %></p>
+              <p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"><%=strTime%>:</p></td><td><p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"><%=intTarget %></p>
            </td>
         </tr>
      <tr> <td>    <p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"></p></td></tr>
                
-       <tr > <td > <p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase; background-color: #FFFF00;">Cum%:</p></td> <td><p><%=intCum %></p</td></tr>
+       <tr > <td > <p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase; ">Actual Cum%:</p></td> <td><p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"><%=intCum %></p</td></tr>
         <tr> <td><p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"></p></td></tr>
-        <tr> <td><p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase">Time Lapses:<%=dateTimeStr %></p></td></tr>
+     <tr > <td > <p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase;">Output Gap:</p></td> <td <%=strWebColor %>><p><%=intTarget-intCum %></p></td></tr>
+        <tr> <td><p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"></p></td></tr>
+        <tr> <td><p class="Lead" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase">Time Lapses:</p></td><td><p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: larger; font-weight: bold; font-style: italic; font-variant: small-caps; text-transform: uppercase"><%=dateTimeStr %></p></td></tr>
        <tr> <td> <p class="Lead">
             <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" OnInit="Timer1_Init" Interval="1000">
             </asp:Timer>
